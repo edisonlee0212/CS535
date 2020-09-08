@@ -3,6 +3,11 @@
 using namespace CS535;
 
 
+float CS535::Radians(float angle)
+{
+	return angle * 3.1415926f / 180.0f;
+}
+
 vec3 CS535::Normalize(const vec3& v) {
 	float length = sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
 	return vec3(v.x / length, v.y / length, v.z / length);
@@ -27,6 +32,26 @@ vec3 CS535::Cross(const vec3& v1, const vec3& v2) {
 
 vec4 CS535::Cross(const vec4& v1, const vec4& v2) {
 	return vec4(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x, 0.0f);
+}
+
+vec3 CS535::RotateAround(const vec3& point, const vec3& lineAnchor, const vec3 lineDirection, float angle)
+{
+	float x = point.x;
+	float y = point.y;
+	float z = point.z;
+	float a = lineAnchor.x;
+	float b = lineAnchor.y;
+	float c = lineAnchor.z;
+	vec3 direction = Normalize(lineDirection);
+	float u = direction.x;
+	float v = direction.y;
+	float w = direction.z;
+	float theta = angle;
+	return vec3(
+		(a * (v * v + w * w) - u * (b * v + c * w - u * x - v * y - w * z)) * (1.0f - cos(theta)) + x * cos(theta) + (-c * v + b * w - w * y + v * z) * sin(theta),
+		(b * (u * u + w * w) - v * (a * u + c * w - u * x - v * y - w * z)) * (1.0f - cos(theta)) + y * cos(theta) + (c * u + a * w + w * x - u * z) * sin(theta),
+		(c * (u * u + v * v) - w * (a * u + b * v - u * x - v * y - w * z))* (1.0f - cos(theta)) + z * cos(theta) + (-b * u + a * v - v * x + u * y) * sin(theta)
+	);
 }
 
 mat4 CS535::Inverse(mat4 m) {
@@ -93,6 +118,16 @@ mat4 CS535::Transpose(mat4 m)
 		vec4(m[0][2], m[1][2], m[2][2], m[3][2]),
 		vec4(m[0][3], m[1][3], m[2][3], m[3][3])
 	);
+}
+
+mat4 CS535::Scale(mat4 m, vec3 scale)
+{
+	mat4 ret;
+	ret[0] = m[0] * scale[0];
+	ret[1] = m[1] * scale[1];
+	ret[2] = m[2] * scale[2];
+	ret[3] = m[3];
+	return ret;
 }
 
 mat4 CS535::Translate(mat4 m, vec3 position) {

@@ -1,9 +1,7 @@
 #pragma once
 #include <iostream>
 namespace CS535 {
-	float Radians(float angle) {
-		return angle * 3.1415926f / 180.0f;
-	}
+	float Radians(float angle);
 
 	class vec3 {
 	public:
@@ -134,6 +132,8 @@ namespace CS535 {
 	vec3 Cross(const vec3& v1, const vec3& v2);
 	vec4 Cross(const vec4& v1, const vec4& v2);
 
+	vec3 RotateAround(const vec3& point, const vec3& lineAnchor, const vec3 lineDirection, float angle);
+
 	class mat4 {
 	public:
 		union {
@@ -247,11 +247,11 @@ namespace CS535 {
 		mat4 operator*(float d) {
 			return mat4(value[0] * d, value[1] * d, value[2] * d, value[3] * d);
 		}
-		mat4 operator*(mat4& m1) {
-			vec4 SrcA0 = m1[0];
-			vec4 SrcA1 = m1[1];
-			vec4 SrcA2 = m1[2];
-			vec4 SrcA3 = m1[3];
+		mat4 operator*(const mat4& m1) {
+			vec4 SrcA0 = m1.value[0];
+			vec4 SrcA1 = m1.value[1];
+			vec4 SrcA2 = m1.value[2];
+			vec4 SrcA3 = m1.value[3];
 
 			vec4 SrcB0 = value[0];
 			vec4 SrcB1 = value[1];
@@ -286,4 +286,5 @@ namespace CS535 {
 	mat4 Rotate(mat4 m, float angle, vec3 axis);
 	mat4 Inverse(mat4 m);
 	mat4 Transpose(mat4 m);
+	mat4 Scale(mat4 m, vec3 scale);
 }

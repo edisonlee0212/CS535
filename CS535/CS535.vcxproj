@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{882adb61-0a62-4b5c-af1d-e0ebb4774e03}</ProjectGuid>
+    <ProjectGuid>{c137cd30-f8c1-4ef1-803b-82b96909f759}</ProjectGuid>
     <RootNamespace>CS535</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -78,9 +78,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(ProjectDir)$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>..\Submodules\glfw\include;..\Submodules\ImGui\examples;..\Submodules\ImGui;..\includes\glad\include;..\includes\Assimp\include;..\Submodules\glm\glm;..\Submodules\stb;..\Core;..\EntityEditor;..\UniEngine;..\Entities;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>..\Submodules\glfw\include;..\Submodules\ImGui\examples;..\Submodules\ImGui;..\includes\glad\include;..\includes\Assimp\include;..\Submodules\glm\glm;..\Submodules\stb;..\Core;..\EntityEditor;..\UniEngine;..\Entities;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -121,6 +124,13 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "..\Core\$(IntDir)Core.dll" "$(OutDir)"
+xcopy /y /d "..\Entities\$(IntDir)Entities.dll" "$(OutDir)"
+xcopy /y /d "..\EntityEditor\$(IntDir)EntityEditor.dll" "$(OutDir)"
+xcopy /y /d "..\UniEngine\$(IntDir)UniEngine.dll" "$(OutDir)"
+xcopy /y /d "..\includes\Assimp\$(IntDir)assimp-vc142-mtd.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -137,13 +147,36 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "..\Core\$(IntDir)Core.dll" "$(OutDir)"
+xcopy /y /d "..\Entities\$(IntDir)Entities.dll" "$(OutDir)"
+xcopy /y /d "..\EntityEditor\$(IntDir)EntityEditor.dll" "$(OutDir)"
+xcopy /y /d "..\UniEngine\$(IntDir)UniEngine.dll" "$(OutDir)"
+xcopy /y /d "..\includes\Assimp\$(IntDir)assimp-vc142-mt.dll" "$(OutDir)" </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CS535.cpp" />
     <ClCompile Include="Math.cpp" />
+    <ClCompile Include="Rendering.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.vcxproj">
+      <Project>{105d0cec-d794-48fc-aed7-b4c911a6ff4e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Entities\Entities.vcxproj">
+      <Project>{6eefcfb9-6499-4a25-8b47-497ad00822bd}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityEditor\EntityEditor.vcxproj">
+      <Project>{12a68164-4dcb-40ac-b4e4-0fc8f0f78954}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\UniEngine\UniEngine.vcxproj">
+      <Project>{324d4482-9924-4f0b-aba0-e6e9ba51b02f}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math.h" />
+    <ClInclude Include="Rendering.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
