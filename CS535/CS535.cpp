@@ -11,7 +11,9 @@ int main()
     vec3 v1(1, 2, 3);
     vec3 v2(1, 0, 0);
     vec3 v3 = v1 / 2.0f;
-    std::cout << v3.Normalize().Length() << std::endl;
+    mat4 m;
+    m = Translate(mat4::Identity(), v3);
+    std::cout << m << std::endl;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
