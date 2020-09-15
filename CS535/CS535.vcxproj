@@ -79,11 +79,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>..\Submodules\glfw\include;..\Submodules\ImGui\examples;..\Submodules\ImGui;..\includes\glad\include;..\includes\Assimp\include;..\Submodules\glm\glm;..\Submodules\stb;..\Core;..\EntityEditor;..\UniEngine;..\Entities;$(IncludePath)</IncludePath>
+    <IncludePath>..\UniEngine\Submodules\glfw\include;..\UniEngine\Submodules\ImGui\examples;..\UniEngine\Submodules\ImGui;..\UniEngine\includes\glad\include;..\UniEngine\includes\Assimp\include;..\UniEngine\Submodules\glm\glm;..\UniEngine\Submodules\stb;..\UniEngine\Core;..\UniEngine\EntityEditor;..\UniEngine\UniEngine;..\UniEngine\Entities;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\Submodules\glfw\include;..\Submodules\ImGui\examples;..\Submodules\ImGui;..\includes\glad\include;..\includes\Assimp\include;..\Submodules\glm\glm;..\Submodules\stb;..\Core;..\EntityEditor;..\UniEngine;..\Entities;$(IncludePath)</IncludePath>
+    <IncludePath>..\UniEngine\Submodules\glfw\include;..\UniEngine\Submodules\ImGui\examples;..\UniEngine\Submodules\ImGui;..\UniEngine\includes\glad\include;..\UniEngine\includes\Assimp\include;..\UniEngine\Submodules\glm\glm;..\UniEngine\Submodules\stb;..\UniEngine\Core;..\UniEngine\EntityEditor;..\UniEngine\UniEngine;..\UniEngine\Entities;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -125,11 +125,11 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d "..\Core\$(IntDir)Core.dll" "$(OutDir)"
-xcopy /y /d "..\Entities\$(IntDir)Entities.dll" "$(OutDir)"
-xcopy /y /d "..\EntityEditor\$(IntDir)EntityEditor.dll" "$(OutDir)"
-xcopy /y /d "..\UniEngine\$(IntDir)UniEngine.dll" "$(OutDir)"
-xcopy /y /d "..\includes\Assimp\$(IntDir)assimp-vc142-mtd.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d "..\UniEngine\Core\$(IntDir)Core.dll" "$(OutDir)"
+xcopy /y /d "..\UniEngine\Entities\$(IntDir)Entities.dll" "$(OutDir)"
+xcopy /y /d "..\UniEngine\EntityEditor\$(IntDir)EntityEditor.dll" "$(OutDir)"
+xcopy /y /d "..\UniEngine\UniEngine\$(IntDir)UniEngine.dll" "$(OutDir)"
+xcopy /y /d "..\UniEngine\includes\Assimp\$(IntDir)assimp-vc142-mtd.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -148,11 +148,11 @@ xcopy /y /d "..\includes\Assimp\$(IntDir)assimp-vc142-mtd.dll" "$(OutDir)"</Comm
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d "..\Core\$(IntDir)Core.dll" "$(OutDir)"
-xcopy /y /d "..\Entities\$(IntDir)Entities.dll" "$(OutDir)"
-xcopy /y /d "..\EntityEditor\$(IntDir)EntityEditor.dll" "$(OutDir)"
-xcopy /y /d "..\UniEngine\$(IntDir)UniEngine.dll" "$(OutDir)"
-xcopy /y /d "..\includes\Assimp\$(IntDir)assimp-vc142-mt.dll" "$(OutDir)" </Command>
+      <Command>xcopy /y /d "..\UniEngine\Core\$(IntDir)Core.dll" "$(OutDir)"
+xcopy /y /d "..\UniEngine\Entities\$(IntDir)Entities.dll" "$(OutDir)"
+xcopy /y /d "..\UniEngine\EntityEditor\$(IntDir)EntityEditor.dll" "$(OutDir)"
+xcopy /y /d "..\UniEngine\UniEngine\$(IntDir)UniEngine.dll" "$(OutDir)"
+xcopy /y /d "..\UniEngine\includes\Assimp\$(IntDir)assimp-vc142-mt.dll" "$(OutDir)" </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -161,16 +161,16 @@ xcopy /y /d "..\includes\Assimp\$(IntDir)assimp-vc142-mt.dll" "$(OutDir)" </Comm
     <ClCompile Include="Rendering.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.vcxproj">
+    <ProjectReference Include="..\UniEngine\Core\Core.vcxproj">
       <Project>{105d0cec-d794-48fc-aed7-b4c911a6ff4e}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Entities\Entities.vcxproj">
+    <ProjectReference Include="..\UniEngine\Entities\Entities.vcxproj">
       <Project>{6eefcfb9-6499-4a25-8b47-497ad00822bd}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\EntityEditor\EntityEditor.vcxproj">
+    <ProjectReference Include="..\UniEngine\EntityEditor\EntityEditor.vcxproj">
       <Project>{12a68164-4dcb-40ac-b4e4-0fc8f0f78954}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\UniEngine\UniEngine.vcxproj">
+    <ProjectReference Include="..\UniEngine\UniEngine\UniEngine.vcxproj">
       <Project>{324d4482-9924-4f0b-aba0-e6e9ba51b02f}</Project>
     </ProjectReference>
   </ItemGroup>

@@ -24,6 +24,7 @@ int main()
 	LightingManager::SetEVSMExponent(80.0f);
 	LightingManager::SetSplitRatio(0.15f, 0.3f, 0.5f, 1.0f);
 #pragma endregion
+	FileIO::SetResourcePath("../UniEngine/Resources/");
 	Application::Init();
 #pragma region Lights
 	EntityArchetype lightArchetype = EntityManager::CreateEntityArchetype("Light", Translation(), Rotation(), LocalToWorld());
@@ -71,8 +72,8 @@ int main()
 
 	Translation t;
 	t.Value = glm::vec3(0, 0, 10);
-	r.Value = glm::quatLookAt(glm::vec3(0, 10, -10), glm::vec3(0, 1, 0));
-	scale.Value = glm::vec3(0.1f, 2.0f, 0.01f);
+	r.Value = glm::quat(glm::vec3(glm::radians(-45.0f), 0.0f, 0.0f));
+	scale.Value = glm::vec3(0.2f, 30.0f, 0.2f);
 	Entity axis = EntityManager::CreateEntity(axisArchetype);
 	EntityManager::SetSharedComponent(axis, ammc);
 	EntityManager::SetComponentData(axis, scale);
@@ -114,7 +115,7 @@ void InitGround() {
 	auto mat = new Material();
 	mat->Programs()->push_back(Default::GLPrograms::StandardProgram);
 	auto texture = new Texture2D(TextureType::DIFFUSE);
-	texture->LoadTexture(FileIO::GetPath("Textures/white.png"), "");
+	texture->LoadTexture(FileIO::GetResourcePath("Textures/white.png"), "");
 	mat->Textures2Ds()->push_back(texture);
 	mat->SetMaterialProperty("material.shininess", 32.0f);
 	MeshMaterialComponent* meshMaterial = new MeshMaterialComponent();
