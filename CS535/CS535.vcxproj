@@ -127,7 +127,6 @@
     <PostBuildEvent>
       <Command>xcopy /y /d "..\UniEngine\Core\$(IntDir)Core.dll" "$(OutDir)"
 xcopy /y /d "..\UniEngine\Entities\$(IntDir)Entities.dll" "$(OutDir)"
-xcopy /y /d "..\UniEngine\EntityEditor\$(IntDir)EntityEditor.dll" "$(OutDir)"
 xcopy /y /d "..\UniEngine\UniEngine\$(IntDir)UniEngine.dll" "$(OutDir)"
 xcopy /y /d "..\UniEngine\includes\Assimp\$(IntDir)assimp-vc142-mtd.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
@@ -150,7 +149,6 @@ xcopy /y /d "..\UniEngine\includes\Assimp\$(IntDir)assimp-vc142-mtd.dll" "$(OutD
     <PostBuildEvent>
       <Command>xcopy /y /d "..\UniEngine\Core\$(IntDir)Core.dll" "$(OutDir)"
 xcopy /y /d "..\UniEngine\Entities\$(IntDir)Entities.dll" "$(OutDir)"
-xcopy /y /d "..\UniEngine\EntityEditor\$(IntDir)EntityEditor.dll" "$(OutDir)"
 xcopy /y /d "..\UniEngine\UniEngine\$(IntDir)UniEngine.dll" "$(OutDir)"
 xcopy /y /d "..\UniEngine\includes\Assimp\$(IntDir)assimp-vc142-mt.dll" "$(OutDir)" </Command>
     </PostBuildEvent>
@@ -166,9 +164,6 @@ xcopy /y /d "..\UniEngine\includes\Assimp\$(IntDir)assimp-vc142-mt.dll" "$(OutDi
     </ProjectReference>
     <ProjectReference Include="..\UniEngine\Entities\Entities.vcxproj">
       <Project>{6eefcfb9-6499-4a25-8b47-497ad00822bd}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\UniEngine\EntityEditor\EntityEditor.vcxproj">
-      <Project>{12a68164-4dcb-40ac-b4e4-0fc8f0f78954}</Project>
     </ProjectReference>
     <ProjectReference Include="..\UniEngine\UniEngine\UniEngine.vcxproj">
       <Project>{324d4482-9924-4f0b-aba0-e6e9ba51b02f}</Project>
